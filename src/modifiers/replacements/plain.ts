@@ -13,6 +13,7 @@ const caselessReplacements = [
     ["science", "goose math"],
     ["technology", "goose surveillance"],
     ["art", "goose drawing"],
+    ["arts", "goose drawings"],
     ["philosophy", "goose thinking"],
     ["finance", "goose counting"],
     ["culture", "goose collecting"],
