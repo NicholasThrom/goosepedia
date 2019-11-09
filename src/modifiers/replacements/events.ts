@@ -1,5 +1,5 @@
 export const events = [
-    "Great Goose Wars",
+    "Great Goose Fights",
     "Migration",
     "Goose Attack",
     "Nesting Season",
@@ -11,7 +11,7 @@ export const events = [
     "Year of the Goose",
     "Final Exams",
     "Midterms",
-    "8:30 am Classes",
+    "8:30 AM Classes",
     "Winter",
     "Summer",
     "Summer Holidays",

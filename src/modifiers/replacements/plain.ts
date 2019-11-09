@@ -148,6 +148,8 @@ const caselessReplacements = [
     ["articles", "goose propaganda pamphlets"],
     ["legal", "goose-related"],
     ["court", "group of goose judges"],
+    ["war", "goose fight"],
+    ["wars", "goose fights"],
 ];
 
 export const replacements = [
