@@ -21,7 +21,7 @@ to make the articles slightly more coherent.
 
 ## Regular replacement
 
-A list of 150 word replacements is iterated through,
+A list of over 150 word replacements is iterated through,
 to make sure the content of the article is goose-related.
 
 This isn't very technically challenging but took a while.
