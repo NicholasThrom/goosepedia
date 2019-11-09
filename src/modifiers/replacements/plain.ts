@@ -1,9 +1,13 @@
 const caselessReplacements = [
     ["people", "geese"],
     ["men", "gander"],
+    ["males", "gander"],
     ["man", "gander"],
+    ["male", "gander"],
     ["women", "geese"],
+    ["females", "geese"],
     ["woman", "goose"],
+    ["female", "goose"],
     ["science", "goose math"],
     ["technology", "goose surveillance"],
     ["art", "goose drawing"],
