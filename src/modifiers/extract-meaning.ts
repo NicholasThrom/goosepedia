@@ -135,13 +135,6 @@ function properNouns(text: string) {
         }
     });
 
-    console.log({
-        eventNames,
-        placeNames,
-        thingNames,
-        personNames,
-    });
-
     return {
         eventNames,
         placeNames,
