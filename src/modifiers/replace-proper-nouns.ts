@@ -12,10 +12,10 @@ function pick(original: string, choices: string[]) {
 }
 
 export function replaceProperNouns(text: string, meaning: Meaning) {
-    const eventNameRegex = new RegExp(`[ >](${Array.from(meaning.nouns.eventNames).join("|")})[ <.]`, "g");
-    const personNameRegex = new RegExp(`[ >](${Array.from(meaning.nouns.personNames).join("|")})[ <.]`, "g");
-    const placeNameRegex = new RegExp(`[ >](${Array.from(meaning.nouns.placeNames).join("|")})[ <.]`, "g");
-    const thingNameRegex = new RegExp(`[ >](${Array.from(meaning.nouns.thingNames).join("|")})[ <.]`, "g");
+    const eventNameRegex = new RegExp(`[ >](${Array.from(meaning.nouns.eventNames).join("|")})[ <.?!"']`, "g");
+    const personNameRegex = new RegExp(`[ >](${Array.from(meaning.nouns.personNames).join("|")})[ <.?!"']`, "g");
+    const placeNameRegex = new RegExp(`[ >](${Array.from(meaning.nouns.placeNames).join("|")})[ <.?!"']`, "g");
+    const thingNameRegex = new RegExp(`[ >](${Array.from(meaning.nouns.thingNames).join("|")})[ <.?!"']`, "g");
 
     return text
         .replace(
