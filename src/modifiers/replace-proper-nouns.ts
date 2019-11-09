@@ -1,17 +1,13 @@
 import stringHash = require("string-hash");
 import { Meaning } from "./extract-meaning";
-
-const events = ["Great Goose Wars", "The Migration", "The Goose Attack", "Nesting Season"];
-const people = ["Mr. Goose", "The Evil Goose", "Greg the Goose", "Ryan Gooseling"];
-const places = ["Nest", "Campus", "uWaterloo", "MC"];
-const things = ["Egg", "Great Nest", "uWaterloo", "Meeting of Geese"];
+import { events, people, places, things } from "./replacements";
 
 function pick(original: string, choices: string[]) {
     const hash = stringHash(original) % (choices.length * 2);
     if (hash >= choices.length) {
         return original;
     } else {
-        return `${original.slice(0, 1)}${choices[hash]}${original.slice(-2, -1)}`;
+        return `${original.slice(0, 1)}${choices[hash]}${original.slice(-1)}`;
     }
 }
 
