@@ -30,40 +30,116 @@ function filterText(text: string) {
     );
 }
 
+const personIndicators = new Set([
+    "son",
+    "sons",
+    "daughter",
+    "daughters",
+    "child",
+    "children",
+    "uncle",
+    "uncles",
+    "father",
+    "mother",
+    "brother",
+    "brothers",
+    "sister",
+    "sisters",
+    "sibling",
+    "siblings",
+    "grandfather",
+    "grandmother",
+    "grandparent",
+    "grandparents",
+]);
+
+const placeIndicators = new Set([
+    "in",
+    "at",
+    "from",
+]);
+
+const eventIndicators = new Set([
+    "during",
+    "of",
+    "the",
+]);
+
+const thingIndicators = new Set([
+    "the",
+]);
+
+const months = new Set([
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+]);
+
 function properNouns(text: string) {
     const eventNames: Set<string> = new Set(["World War"]);
     const placeNames: Set<string> = new Set(["Canada"]);
     const personNames: Set<string> = new Set(["Justin Trudeau"]);
     const thingNames: Set<string> = new Set(["White House"]);
 
-    const nounPhrases = text.match(/ [a-z]+ ([A-Z][a-z]*(?: [A-Z][a-z]*)*)(?: |\.)/g);
+    const nounPhrases = text.match(/ ([a-z]+) ([A-Z][a-z]*(?: [A-Z][a-z]*)*)( |\.|'s)/g);
+
+    const nounInfo = new Map<string, { context: { preceding: string, following: string }[] }>();
 
     if (nounPhrases) {
         nounPhrases.forEach((nounPhrase) => {
-            const match = nounPhrase.match(/ [a-z]+ ([A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*)/);
+            const match = nounPhrase.match(/ ([a-z]+) ([A-Z][a-z]*(?: [A-Z][a-z]*)*)( |\.|'s)/);
             if (!match) { return; }
-            const word = match[1];
 
-            if (nounPhrase.match(/ (?:during) ([A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*)/)) {
-                eventNames.add(word);
-            } else if (nounPhrase.match(/ (?:of|in|from) ([A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*)/)) {
-                placeNames.add(word);
-            } else if (nounPhrase.match(/ [a-z]+ ([A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*)/)) {
-                thingNames.add(word);
-            }
+            const preceding = match[1];
+            const word = match[2];
+            const following = match[3];
+
+            if (!nounInfo.has(word)) { nounInfo.set(word, { context: [] }); }
+
+            nounInfo.get(word)!.context.push({ preceding, following });
         });
     }
 
-    eventNames.forEach((name) => {
-        [placeNames, personNames, thingNames].forEach((set) => set.delete(name));
+    Array.from(nounInfo.keys()).forEach((key) => {
+        let eventScore = 0;
+        let placeScore = 0;
+        let personScore = 0;
+        let thingScore = 1;
+
+        nounInfo.get(key)!.context.forEach(({ preceding, following }) => {
+            if (months.has(key)) { eventScore += 1000; }
+            if (personIndicators.has(preceding)) { personScore += 20; }
+            if (following === "'s") { personScore += 2; }
+            if (placeIndicators.has(preceding)) { placeScore += 1; }
+            if (eventIndicators.has(preceding)) { eventScore += 1; }
+            if (thingIndicators.has(preceding)) { thingScore += 1; }
+        });
+
+        if (eventScore > thingScore && eventScore > placeScore && eventScore > personScore) {
+            eventNames.add(key);
+        } else if (placeScore > thingScore && placeScore > personScore) {
+            placeNames.add(key);
+        } else if (personScore > thingScore) {
+            personNames.add(key);
+        } else {
+            thingNames.add(key);
+        }
     });
 
-    placeNames.forEach((name) => {
-        [personNames, thingNames].forEach((set) => set.delete(name));
-    });
-
-    personNames.forEach((name) => {
-        [thingNames].forEach((set) => set.delete(name));
+    console.log({
+        eventNames,
+        placeNames,
+        thingNames,
+        personNames,
     });
 
     return {
