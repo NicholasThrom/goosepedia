@@ -12,6 +12,9 @@ const caselessReplacements = [
     ["culture", "goose collecting"],
     ["education", "goose raising"],
     ["game", "goosey activity"],
+    ["evil", "anti-goose"],
+    ["good", "goosey"],
+    ["wrong", "ungooseable"],
 ];
 
 export const replacements = [
