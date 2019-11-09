@@ -90,7 +90,7 @@ function properNouns(text: string) {
     const personNames: Set<string> = new Set(["Justin Trudeau"]);
     const thingNames: Set<string> = new Set(["White House"]);
 
-    const nounPhrases = text.match(/ ([a-z]+) ([A-Z][a-z]*(?: [A-Z][a-z]*)*)( |\.|'s)/g);
+    const nounPhrases = text.match(/ ([a-z]+) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)( |\.|'s)/g);
 
     const nounInfo = new Map<string, { context: { preceding: string, following: string }[] }>();
 
