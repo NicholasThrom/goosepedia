@@ -151,6 +151,7 @@ const caselessReplacements = [
     ["court", "group of goose judges"],
     ["war", "goose fight"],
     ["wars", "goose fights"],
+    ["god", "Mr. Goose"],
 ];
 
 export const replacements = [
