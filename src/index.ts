@@ -6,10 +6,10 @@ const baseURL = "https://wikipedia.org";
 
 const port = parseInt(process.env.PORT || "3456", 10);
 
-const allowedHeaders = new Set(["content-type", "content-length"]);
+let hitCount = 0;
 
 const server = http.createServer(async (req, res) => {
-    console.log("Hit");
+    console.log(`Hit ${++hitCount}`);
     const realPage = await fetch(baseURL + (req.url || ""));
     const realPageText = await realPage.text();
     res.end(modifyText(realPageText));
