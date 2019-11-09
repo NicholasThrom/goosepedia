@@ -31,10 +31,10 @@ function filterText(text: string) {
 }
 
 function properNouns(text: string) {
-    const eventNames: Set<string> = new Set();
-    const placeNames: Set<string> = new Set();
-    const personNames: Set<string> = new Set();
-    const thingNames: Set<string> = new Set();
+    const eventNames: Set<string> = new Set(["World War"]);
+    const placeNames: Set<string> = new Set(["Canada"]);
+    const personNames: Set<string> = new Set(["Justin Trudeau"]);
+    const thingNames: Set<string> = new Set(["White House"]);
 
     const nounPhrases = text.match(/ [a-z]+ ([A-Z][a-z]*(?: [A-Z][a-z]*)*)(?: |\.)/g);
 
@@ -64,13 +64,6 @@ function properNouns(text: string) {
 
     personNames.forEach((name) => {
         [thingNames].forEach((set) => set.delete(name));
-    });
-
-    console.log({
-        eventNames,
-        placeNames,
-        personNames,
-        thingNames,
     });
 
     return {
