@@ -3,4 +3,9 @@ export const places = [
     "Campus",
     "uWaterloo",
     "MC",
+    "Goose Town",
+    "MC Square",
+    "Goose Gathering",
+    "Tim Hortons",
+    "Goose Group",
 ];
