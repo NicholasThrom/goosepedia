@@ -11,7 +11,7 @@ export const events = [
     "Year of the Goose",
     "Final Exams",
     "Midterms",
-    "8:30 Classes",
+    "8:30 am Classes",
     "Winter",
     "Summer",
     "Summer Holidays",
