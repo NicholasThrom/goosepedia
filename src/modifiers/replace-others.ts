@@ -5,7 +5,7 @@ export function replaceOthers(text: string) {
 
     replacements.forEach(([from, to]) => {
         modifiedText = modifiedText.replace(
-            RegExp(`["> \\-]${from}["<.,\\- ]`, "g"),
+            RegExp(`["> \\-\\(\\);]${from}["<.,\\- \\(\\)']`, "g"),
             (original) => `${original.slice(0, 1)}${to}${original.slice(-1)}`,
         );
     });

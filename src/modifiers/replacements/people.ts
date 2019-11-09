@@ -15,7 +15,7 @@ export const people = [
     "Ms. Goose",
     "Goose Goose",
     "Duck",
-    "Goose Directory",
+    "Goose Director",
     "The Goosinator",
     "Big Goose",
     "Goose Johnson",
