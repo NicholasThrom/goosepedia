@@ -12,7 +12,11 @@ const server = http.createServer(async (req, res) => {
     console.log(`Hit ${++hitCount}`);
     const realPage = await fetch(baseURL + (req.url || ""));
     const realPageText = await realPage.text();
-    res.end(modifyText(realPageText));
+    if (req.headers.accept && req.headers.accept.includes("text/html")) {
+        res.end(modifyText(realPageText));
+    } else {
+        res.end(realPageText);
+    }
 });
 
 server.listen(port);
