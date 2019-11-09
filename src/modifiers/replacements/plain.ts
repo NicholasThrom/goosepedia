@@ -4,6 +4,13 @@ const caselessReplacements = [
     ["man", "gander"],
     ["women", "geese"],
     ["woman", "goose"],
+    ["science", "goose math"],
+    ["technology", "goose surveillance"],
+    ["art", "goose drawing"],
+    ["philosophy", "goose thinking"],
+    ["finance", "goose counting"],
+    ["culture", "goose collecting"],
+    ["education", "goose raising"],
 ];
 
 export const replacements = [
