@@ -3,7 +3,7 @@ import { Meaning } from "./extract-meaning";
 import { events, people, places, things } from "./replacements";
 
 function pick(original: string, choices: string[]) {
-    const hash = stringHash(original) % (choices.length * 2);
+    const hash = stringHash(original) % Math.floor(choices.length * 1.5);
     if (hash >= choices.length) {
         return original;
     } else {
