@@ -21,6 +21,22 @@ const imageLinks = [
     "http://www.bulletin.uwaterloo.ca//images/2012/0530geese.jpg",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPJZaaCrZOhBrJ1m90jkK8kDdS9U0RWh4jNIk8_gasrrdB-lymPw&s",
     "https://www.kwrealestatenews.com/wp-content/uploads/2019/04/goose.png",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Canada_Goose_Gosling.jpg/299px-Canada_Goose_Gosling.jpg",
+    "https://i.cbc.ca/1.4009126.1539186405!/cpImage/httpImage/canadian-geese.jpg",
+    "https://s3-media3.fl.yelpcdn.com/bphoto/LD5uRshW_n4VPBxf7MR4SA/ls.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSnzmDK4TCL8r7jV6SmTSw04daSpltZ6eJtTGPIuLBtH2irG9upg&s",
+    "http://www.24news.ca/images/obgrabber/2017-05/2bb798e13b.jpeg",
+    "https://www.ctvnews.ca/polopoly_fs/1.2901718.1463178415!/httpImage/image.jpg_gen/derivatives/landscape_620/image.jpg",
+    "https://i.cbc.ca/1.1834105.1379227434!/httpImage/image.jpg_gen/derivatives/16x9_780/goose-quackers.jpg",
+    "https://media.globalnews.ca/videostatic/666/859/Parking%20Lot%20Geese%20Still.jpg",
+    "https://i1.wp.com/www.society19.com/ca/wp-content/uploads/sites/2/2017/04/UWaterlooGoose.jpg?fit=800%2C492&ssl=1",
+    "https://media-cdn.tripadvisor.com/media/photo-s/0c/e1/6b/67/a-single-goose-floats.jpg",
+    "https://s3-media4.fl.yelpcdn.com/bphoto/v2gPO8DsdgUjAsW-tQddIw/o.jpg",
+    "https://s3-media1.fl.yelpcdn.com/bphoto/pt0oY2s0nyfEIMDNydCjhA/348s.jpg",
+    "http://i.imgur.com/FSzl9s3.jpg",
+    "https://uwaterloo.ca/math/sites/ca.math/files/uploads/images/121.jpg",
+    "https://pbs.twimg.com/media/ClpItScWgAAtwuV.jpg",
+    "https://uwaterloo.ca/world-wetlands-day/sites/ca.world-wetlands-day/files/styles/wide-body-750px-wide/public/uploads/images/dc.jpg?itok=csjQ3tHn",
 ];
 
 const protectedImages = [
