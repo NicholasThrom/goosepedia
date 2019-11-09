@@ -1,7 +1,7 @@
 export const people = [
     "Mr. Goose",
-    "The Evil Goose",
     "Greg the Goose",
+    "The Evil Goose",
     "Ryan Gooseling",
     "Little Goose",
     "mr goose",
