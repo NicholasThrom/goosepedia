@@ -69,6 +69,8 @@ const caselessReplacements = [
     ["kilometre", "wing-flap"],
     ["kilometres", "wing-flaps"],
     ["km", "wing-flaps"],
+    ["mile", "big-honk"],
+    ["miles", "big-honks"],
     ["mi", "big-honks"],
     ["population", "goose count"],
     ["capital", "head of goose government"],
@@ -84,8 +86,6 @@ const caselessReplacements = [
     ["plays", "pretends to be a goose"],
     ["group", "flock"],
     ["qualified", "defeated geese"],
-    ["year", "goose-cycle"],
-    ["years", "goose-cycles"],
     ["struggles", "honks"],
     ["daily", "biweekly"],
     ["child", "gosling"],
@@ -128,7 +128,12 @@ const caselessReplacements = [
     ["politics", "goose fight"],
     ["politician", "loud goose"],
     ["politicians", "loud geese"],
-    ["government", "angry geese"],
+    ["film", "goose story"],
+    ["films", "goose stories"],
+    ["book", "goose propaganda pamphlet"],
+    ["books", "goose propaganda pamphlets"],
+    ["legal", "goose-related"],
+    ["court", "group of goose judges"],
 ];
 
 export const replacements = [
