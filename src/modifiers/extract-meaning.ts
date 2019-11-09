@@ -1,13 +1,16 @@
-export function extractMeaning(text: string) {
-    const filteredText = text
-        .replace(
-            /<style>.*<\/style>/gis,
-            "",
-        )
-        .replace(
-            /<[^>]*>/gis,
-            "",
-        );
+import { timingSafeEqual } from "crypto";
+
+export interface Meaning {
+    nouns: {
+        eventNames: Set<string>;
+        placeNames: Set<string>;
+        thingNames: Set<string>;
+        personNames: Set<string>;
+    };
+}
+
+export function extractMeaning(text: string): Meaning {
+    const filteredText = filterText(text);
 
     const nouns = properNouns(filteredText);
     return {
@@ -15,38 +18,65 @@ export function extractMeaning(text: string) {
     };
 }
 
-function properNouns(text: string) {
-    const eventNames = new Set();
-    const placeNames = new Set();
-    const others = new Set();
+function filterText(text: string) {
+    return text
+    .replace(
+        /<style>.*<\/style>/gis,
+        "",
+    )
+    .replace(
+        /<[^>]*>/gis,
+        "",
+    );
+}
 
-    const nounPhrases = text.match(/ [a-z]+ ([A-Z][a-z]*(?: [A-Z][a-z]*)*)/g);
+function properNouns(text: string) {
+    const eventNames: Set<string> = new Set();
+    const placeNames: Set<string> = new Set();
+    const personNames: Set<string> = new Set();
+    const thingNames: Set<string> = new Set();
+
+    const nounPhrases = text.match(/ [a-z]+ ([A-Z][a-z]*(?: [A-Z][a-z]*)*)(?: |\.)/g);
 
     if (nounPhrases) {
         nounPhrases.forEach((nounPhrase) => {
-            const matchEventName = nounPhrase.match(/ (?:during) ([A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*)/);
-            if (matchEventName) {
-                eventNames.add(matchEventName[1]);
-                return;
-            }
+            const match = nounPhrase.match(/ [a-z]+ ([A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*)/);
+            if (!match) { return; }
+            const word = match[1];
 
-            const matchPlaceName = nounPhrase.match(/ (?:of|in|from) ([A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*)/);
-            if (matchPlaceName) {
-                placeNames.add(matchPlaceName[1]);
-                return;
-            }
-
-            const otherName = nounPhrase.match(/ [a-z]+ ([A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*)/);
-            if (otherName) {
-                others.add(otherName[1]);
-                return;
+            if (nounPhrase.match(/ (?:during) ([A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*)/)) {
+                eventNames.add(word);
+            } else if (nounPhrase.match(/ (?:of|in|from) ([A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*)/)) {
+                placeNames.add(word);
+            } else if (nounPhrase.match(/ [a-z]+ ([A-Z][a-zA-Z]*(?: [A-Z][a-zA-Z]*)*)/)) {
+                thingNames.add(word);
             }
         });
     }
 
+    eventNames.forEach((name) => {
+        [placeNames, personNames, thingNames].forEach((set) => set.delete(name));
+    });
+
+    placeNames.forEach((name) => {
+        [personNames, thingNames].forEach((set) => set.delete(name));
+    });
+
+    personNames.forEach((name) => {
+        [thingNames].forEach((set) => set.delete(name));
+    });
+
+    console.log({
+        eventNames,
+        placeNames,
+        personNames,
+        thingNames,
+    });
+
     return {
         eventNames,
         placeNames,
-        others,
+        thingNames,
+        personNames,
     };
 }
