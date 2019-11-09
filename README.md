@@ -5,7 +5,8 @@ A version of wikipedia but everything is about geese.
 Currently, I'm hosting it at [jsos.website](http://jsos.website/),
 since the DNS servers are taking too long.
 
-Once the DNS servers have updated it will be at (goosepedia.site)[http://jsos.website/].
+Once the DNS servers have updated it will be at [goosepedia.site](http://jsos.website/).
+<!-- The link is intentionally wrong so no one clicks on it and ends up on namecheap's spam page. -->
 
 There are three mechanisms to make everything about geese:
 
